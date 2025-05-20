@@ -1,4 +1,5 @@
 import type { MahasiswaType } from "@/types/mahasiswa"; // sesuaikan path
+import type { MataKuliahType } from "@/types/mata-kuliah"; // sesuaikan path
 import axios from "axios";
 
 // Ganti URL base sesuai dengan lokasi backend kamu
@@ -23,3 +24,18 @@ export const updateMahasiswa = (nim: string, data: MahasiswaType) =>
   api.put(`/mahasiswa/${nim}`, data);
 
 export const deleteMahasiswa = (nim: string) => api.delete(`/mahasiswa/${nim}`);
+
+// === MATA KULIAH ENDPOINT ===
+export const getMataKuliah = () => api.get<MataKuliahType[]>("/mata-kuliah");
+
+export const getMataKuliahByKode = (kode: string) =>
+  api.get<MataKuliahType>(`/mata-kuliah/${kode}`);
+
+export const createMataKuliah = (data: MataKuliahType) =>
+  api.post("/mata-kuliah", data);
+
+export const updateMataKuliah = (kode: string, data: MataKuliahType) =>
+  api.put(`/mata-kuliah/${kode}`, data);
+
+export const deleteMataKuliah = (kode: string) =>
+  api.delete(`/mata-kuliah/${kode}`);
